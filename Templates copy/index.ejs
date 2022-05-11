@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Recipe Book</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script src="recipe.js"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1> Welcome to My Recipe Book! </h1>
+        <p>
+            Brief Description
+        </p>
+    </div>
+    
+    <form action="results.ejs" method="POST" class="searchform">
+        Username: <input type="text" name="username" placeholder="Enter username..." class="inputs"/><br>
+        Search Term: <input type="text" name="queryTerm" placeholder="ie. Curry" class="inputs"/><br>
+        <input type="submit" value="Search" class="submit-button"/>
+    </form>
+</body>
+</html>

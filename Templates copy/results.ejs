@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Recipe Book</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script src="recipe.js"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1> Recipe Results based on <%- searchTerm %> </h1>
+        <p>
+            Check off recipes you want to save 
+        </p>
+    </div>
+    
+    <form action="recipebook.ejs" method="POST" class="recipeform">
+        This part will be handled with Node sorta<br>
+        Format example: <br>
+        <ul>
+            <li>Curry Udon <input type="checkbox" name="recipe1" class="recipe-results"/><br></li>
+        </ul>
+        
+        NODE LIST: 
+        <ul>
+            <%- recipeResults %>
+        </ul>
+        <input type="submit" value="Save" class="submit-button"/>
+    </form>
+    <a href="index.html">Home</a>
+</body>
+</html>
