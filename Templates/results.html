@@ -9,19 +9,22 @@
 </head>
 
 <body>
-    <div class="heading">
-        <h1> Recipe Results based on (whatever they said) </h1>
-        <p>
-            Check off recipes you want to save 
-        </p>
+    <img class="bg" src="kitchen_pattern.png" alt="kitchen_image">
+    <div class="real-body">
+        <div class="heading">
+            <h1><strong>Recipe Results based on Curry</strong></h1>
+            <p><strong>
+                Check off recipes you want to save 
+            </strong></p>
+        </div>
+
+        <form action="recipebook.html" method="POST" class="recipeform">
+            This part will be handled with Node sorta<br>
+            Format example: <br>
+            <strong>Curry Udon</strong> <input type="checkbox" name="recipe1" class="recipe-results"/><br>
+            <input type="submit" value="Save" class="submit-button"/>
+        </form>
+        <a href="index.html" class="home-link">Home</a>
     </div>
-    
-    <form action="recipebook.ejs" method="POST" class="recipeform">
-        This part will be handled with Node sorta<br>
-        Format example: <br>
-        Curry Udon <input type="checkbox" name="recipe1" class="recipe-results"/><br>
-        <input type="submit" value="Save" class="submit-button"/>
-    </form>
-    <a href="index.html">Home</a>
 </body>
 </html>

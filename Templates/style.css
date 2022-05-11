@@ -1,0 +1,55 @@
+html {
+    padding: 1em;
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.bg {
+    opacity: 0.2;
+    position: fixed;
+    background-repeat: repeat;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+.real-body {
+    z-index: 3;
+}
+
+.heading h1{
+    color: darkgreen;
+}
+
+form input {
+    margin: 1em;
+}
+
+.submit-button {
+    background: darkgreen;
+    border: none; 
+    border-radius: 30em;
+    color: white; 
+    font-size: 24px;
+    padding: 1rem;
+}
+
+.submit-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.home-link {
+    font-size: 25px;
+}
+
+.recipe-list li {
+    padding: 1em;
+    margin-left: -3%;
+    list-style-type: none;
+    text-decoration: none
+    color: inherit;
+}
