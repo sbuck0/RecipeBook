@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Recipe Book</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script src="recipe.js"></script>
+</head>
+
+<body>
+    <img class="bg" src="kitchen_pattern.png" alt="kitchen_image">
+    <div class="real-body">
+        <div class="heading">
+            <h1><strong>My Recipe Book!  </strong></h1>
+            <p><strong>            
+                Search for a term and find delicious recipes to save!
+            </strong></p>
+        </div>
+
+        <form action="results.html" method="POST" class="searchform">
+            Enter a username: <input type="text" name="username" placeholder="Enter username..." class="inputs" required/><br>
+            Search Term: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="queryTerm" placeholder="ie. Curry" class="inputs"/><br>
+            <input type="submit" value="Search" class="submit-button"/>
+        </form>
+        <a href="index.html">Home</a>
+    </div>
+</body>
+</html>
