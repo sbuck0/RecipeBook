@@ -12,14 +12,17 @@
     <img class="bg" src="kitchen_pattern.png" alt="kitchen_image">
     <div class="real-body">
         <div class="heading">
-            <h1><strong>Welcome to My Recipe Book!  </strong></h1>
+            <h1><strong>My Recipe Book!  </strong></h1>
             <p><strong>            
-                Save recipes in your own personal recipe book!
+               Enter your username to see your delicious saved recipes!
             </strong></p>
         </div>
-        <a href="search_page.html"><button id="search" class="index-button">Find Recipes</button></a><br><br>
-        <a href="search_user.html"><button id="recipebook" class="index-button">My Saved Recipes</button></a>
 
+        <form action="/viewRecipeBook" method="POST" class="searchform">
+            Enter a username: <input type="text" name="username" placeholder="Enter username..." class="inputs" required/><br>
+            <input type="submit" value="Search" class="submit-button"/>
+        </form>
+        <%- homeWebpage %>
     </div>
 </body>
 </html>

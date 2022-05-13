@@ -14,16 +14,15 @@
         <div class="heading">
             <h1><strong>My Recipe Book!  </strong></h1>
             <p><strong>            
-                Search for a term and find delicious recipes to save!
+               Enter your username to see your delicious saved recipes!
             </strong></p>
         </div>
 
-        <form action="/processSearchRecipe" method="POST" class="searchform">
+        <form action="recipebook.html" method="POST" class="searchform">
             Enter a username: <input type="text" name="username" placeholder="Enter username..." class="inputs" required/><br>
-            Search Term: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="queryTerm" placeholder="ie. Curry" class="inputs"/><br>
             <input type="submit" value="Search" class="submit-button"/>
         </form>
-        <%- homeWebpage %>
+        <a href="index.html">Home</a>
     </div>
 </body>
 </html>
