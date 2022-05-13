@@ -9,6 +9,7 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 var globalUsername = "";
+var globalItems;
 
 const userName = process.env.MONGO_DB_USERNAME;
 const password = process.env.MONGO_DB_PASSWORD;
@@ -71,6 +72,7 @@ app.post("/processSearchRecipe", async (request, response) => {
   globalUsername = username;
   //   This is an array that is returned by API when we search for a recipe
   recipeQueries = searchRecipes(queryTerm);
+  globalItems = recipeQueries;
   recipeCheckboxes = generateRecipeChecklist(recipeQueries);
 
   let variables = {
@@ -95,9 +97,13 @@ app.post("/viewRecipeBook", async (request, response) => {
       serverApi: ServerApiVersion.v1,
     });
     let foundUser;
+    let getRecipeObjects = recipe1.reduce(
+      (previousValue, currentValue) => previousValue.push(globalItems[Number(currentValue)]),
+      []
+    );
     try {
       await client.connect();
-      await insertOrUpdateUser(client, databaseAndCollection, globalUsername, recipe1??);
+      await insertOrUpdateUser(client, databaseAndCollection, globalUsername, getRecipeObjects);
       foundUser = await lookUpOneEntry(client, databaseAndCollection, globalUsername);
     } catch (e) {
       console.error(e);
@@ -203,7 +209,6 @@ function getRecipeObjectById(id) {
 }
 
 function generateRecipeChecklist(recipeList) {
-  /* <li>Curry Udon <input type="checkbox" name="recipe1" class="recipe-results"/><br></li> */
   let checklistHTML = "";
   recipeList.forEach(
     (elem, index) =>
