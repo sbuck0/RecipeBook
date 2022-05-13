@@ -94,17 +94,18 @@ app.post("/viewRecipeBook", async (request, response) => {
       useUnifiedTopology: true,
       serverApi: ServerApiVersion.v1,
     });
-    let user;
+    let foundUser;
     try {
       await client.connect();
-      await insertOrUpdateUser(client, databaseAndCollection, globalUsername);
+      await insertOrUpdateUser(client, databaseAndCollection, globalUsername, recipe1??);
+      foundUser = await lookUpOneEntry(client, databaseAndCollection, globalUsername);
     } catch (e) {
       console.error(e);
     } finally {
       await client.close();
     }
     let variables = {
-      recipeList: 1,
+      recipeList: generateRecipeBook(foundUser),
       homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
     };
     response.render("applicantsData", variables);
@@ -117,17 +118,17 @@ app.post("/viewRecipeBook", async (request, response) => {
       useUnifiedTopology: true,
       serverApi: ServerApiVersion.v1,
     });
-    let user;
+    let foundUser;
     try {
       await client.connect();
-      await insertOrUpdateUser(client, databaseAndCollection, globalUsername);
+      foundUser = await lookUpOneEntry(client, databaseAndCollection, globalUsername);
     } catch (e) {
       console.error(e);
     } finally {
       await client.close();
     }
     let variables = {
-      recipeList: 1,
+      recipeList: generateRecipeBook(foundUser),
       homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
     };
     response.render("applicantsData", variables);
@@ -168,6 +169,19 @@ async function insertOrUpdateUser(
   }
 }
 
+async function lookUpOneEntry(client, databaseAndCollection, inputUser) {
+  let filter = { username: inputUser };
+  const cursor = await client
+    .db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection)
+    .findOne(filter);
+  if (cursor) {
+    return cursor;
+  } else {
+    return null;
+  }
+}
+
 async function lookUpMany(client, databaseAndCollection, gpa) {
   let filter = { gpa: { $gte: gpa } };
   const cursor = client
@@ -184,13 +198,25 @@ function searchRecipes(recipeTerm) {
   /* Return array of five or so recipe Objects */
 }
 
+function getRecipeObjectById(id) {
+  /* Return the entire recipeObject in the API given its id in the first query */
+}
+
 function generateRecipeChecklist(recipeList) {
   /* <li>Curry Udon <input type="checkbox" name="recipe1" class="recipe-results"/><br></li> */
   let checklistHTML = "";
-  let counter = 0;
   recipeList.forEach(
     (elem, index) =>
-      (checklistHTML += `<li>${elem}<input type="checkbox" name="recipe1" value="${index}" class="recipe-results"/><br></li>`)
+      (checklistHTML += `<li>${elem.title}<input type="checkbox" name="recipe1" value="${index}" class="recipe-results"/><br></li>`)
   );
   return checklistHTML;
+}
+
+function generateRecipeBook(foundUser) {
+  let listHTML = "";
+  foundUser.recipeList.forEach(
+    (elem) => 
+    (checklistHTML += `<li><a href="${elem.sourceUrl}">${elem.title}</a></li>`)
+    );
+    return listHTML;
 }
