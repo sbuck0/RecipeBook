@@ -65,14 +65,14 @@ app.get("/", (request, response) => {
 
 app.get("/searchRecipe", (request, response) => {
   let variables = {
-    homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
+    homeWebpage: `<a href="/">HOME</a>`,
   };
   response.render("search_page", variables);
 });
 
 app.get("/findUserRecipes", (request, response) => {
   let variables = {
-    homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
+    homeWebpage: `<a href="/">HOME</a>`,
   };
   response.render("search_user", variables);
 });
@@ -94,7 +94,7 @@ app.post("/processSearchRecipe", async (request, response) => {
       username: username,
       searchTerm: queryTerm,
       recipeResults: recipeCheckboxes,
-      homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
+      homeWebpage: `<a href="/">HOME</a>`,
     };
 
     response.render("results", variables);
@@ -128,7 +128,7 @@ app.post("/viewRecipeBook", async (request, response) => {
     }
     let variables = {
       recipeList: generateRecipeBook(foundUser),
-      homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
+      homeWebpage: `<a href="/">HOME</a>`,
     };
     response.render("recipebook", variables);
   } else {
@@ -149,17 +149,16 @@ app.post("/viewRecipeBook", async (request, response) => {
     } finally {
       await client.close();
     }
-    console.log(foundUser)
     if (foundUser === null || foundUser === undefined) {
       let variables = {
         error: `There is no user with the username ${username} that has recipes saved.`,
-        homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
+        homeWebpage: `<a href="/">HOME</a>`,
       };
       response.render("error", variables)
     } else {
       let variables = {
       recipeList: generateRecipeBook(foundUser),
-      homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
+      homeWebpage: `<a href="/">HOME</a>`,
       };
       response.render("recipebook", variables);
     }
