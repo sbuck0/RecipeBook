@@ -12,13 +12,14 @@
     <img class="bg" src="kitchen_pattern.png" alt="kitchen_image">
     <div class="real-body">
         <div class="heading">
-            <h1><strong>Welcome to My Recipe Book!  </strong></h1>
+            <h1><strong>My Recipe Book!  </strong></h1>
             <p><strong>            
-                Save recipes in your own personal recipe book!
+                An error occurred!
             </strong></p>
         </div>
-        <a href="search_page.ejs"><button id="search" class="index-button">Find Recipes</button></a><br><br>
-        <a href="search_user.ejs"><button id="recipebook" class="index-button">My Saved Recipes</button></a>
+        <p><%- error %></p>
+        </br>
+        <%- homeWebpage %>
     </div>
 </body>
 </html>

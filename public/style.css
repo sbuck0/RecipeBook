@@ -5,6 +5,10 @@ html {
     font-size: 20px;
 }
 
+li {
+    list-style: none;
+}
+
 .bg {
     opacity: 0.2;
     position: fixed;
@@ -64,6 +68,6 @@ form input {
     padding: 1em;
     margin-left: -3%;
     list-style-type: none;
-    text-decoration: none
+    text-decoration: none;
     color: inherit;
 }
