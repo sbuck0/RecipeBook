@@ -149,7 +149,8 @@ app.post("/viewRecipeBook", async (request, response) => {
     } finally {
       await client.close();
     }
-    if (foundUser === null) {
+    console.log(foundUser)
+    if (foundUser === null || foundUser === undefined) {
       let variables = {
         error: `There is no user with the username ${username} that has recipes saved.`,
         homeWebpage: `<a href="http://localhost:${portNumber}">HOME</a>`,
