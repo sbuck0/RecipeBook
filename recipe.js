@@ -220,7 +220,7 @@ async function searchRecipes(recipeTerm) {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-      'X-RapidAPI-Key': 'eee60225dfmsh483cdc041112e38p1614f2jsn1e3e3516465d'
+      'X-RapidAPI-Key': '3343614bcamsh452af07678d74a1p159273jsnb9c3333032b9'
     }
   };
   await fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?query=${query}`, options)
@@ -258,7 +258,7 @@ async function getRecipeObjectById(id) {
       method: 'GET',
       headers: {
           'X-RapidAPI-Host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-          'X-RapidAPI-Key': 'eee60225dfmsh483cdc041112e38p1614f2jsn1e3e3516465d'
+          'X-RapidAPI-Key': '3343614bcamsh452af07678d74a1p159273jsnb9c3333032b9'
       }
   };
   if (id !== undefined && id !== null) {
